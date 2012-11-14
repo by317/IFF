@@ -103,8 +103,8 @@ void InitEPwm3()
 	EPwm3Regs.CMPB = 0;
 	
 	   // Set actions
-	EPwm3Regs.AQCTLA.bit.CAU = AQ_SET;             // Set PWM1A on Zero
-	EPwm3Regs.AQCTLA.bit.ZRO = AQ_CLEAR;
+	EPwm3Regs.AQCTLA.bit.ZRO = AQ_SET;             // Set PWM1A on Zero
+	EPwm3Regs.AQCTLA.bit.CAU = AQ_CLEAR;
 	
 	
 	EPwm3Regs.AQCTLB.bit.CAU = AQ_CLEAR;          // Set PWM1A on Zero
@@ -117,7 +117,7 @@ void InitEPwm3()
 	EDIS;
 
    // Active Low PWMs - Setup Deadband
-	EPwm3Regs.DBCTL.bit.OUT_MODE = DB_FULL_ENABLE;
+	EPwm3Regs.DBCTL.bit.OUT_MODE = DB_DISABLE;
 	EPwm3Regs.DBCTL.bit.POLSEL = DB_ACTV_HIC;
 	EPwm3Regs.DBCTL.bit.IN_MODE = DBA_ALL;
 	EPwm3Regs.DBRED = DB_RED;
@@ -127,7 +127,7 @@ void InitEPwm3()
 void InitEPwm4()
 {
 	EPwm4Regs.TBPRD = INITIAL_PERIOD;              // Set timer period
-	EPwm4Regs.TBPHS.half.TBPHS = INITIAL_PERIOD>>1;           // Phase is 0
+	EPwm4Regs.TBPHS.half.TBPHS = 0;           // Phase is 0
 	EPwm4Regs.TBCTR = 0x0000;                      // Clear counter
 
    // Setup TBCLK
@@ -146,14 +146,14 @@ void InitEPwm4()
 	
 	   // Set actions
 	EPwm4Regs.AQCTLA.bit.CAU = AQ_SET;             // Set PWM1A on Zero
-	EPwm4Regs.AQCTLA.bit.ZRO = AQ_CLEAR;
+	EPwm4Regs.AQCTLA.bit.CBU = AQ_CLEAR;
 	
 	
 	EPwm4Regs.AQCTLB.bit.CAU = AQ_CLEAR;          // Set PWM1A on Zero
 	EPwm4Regs.AQCTLB.bit.ZRO = AQ_SET;
 
    // Active Low PWMs - Setup Deadband
-	EPwm4Regs.DBCTL.bit.OUT_MODE = DB_FULL_ENABLE;
+	EPwm4Regs.DBCTL.bit.OUT_MODE = DB_DISABLE;
 	EPwm4Regs.DBCTL.bit.POLSEL = DB_ACTV_HIC;
 	EPwm4Regs.DBCTL.bit.IN_MODE = DBA_ALL;
 	EPwm4Regs.DBRED = DB_RED;

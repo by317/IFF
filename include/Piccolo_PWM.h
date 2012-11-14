@@ -3,7 +3,7 @@
 
 #define DB_RED	8
 #define DB_FED	8
-#define INITIAL_PERIOD	240
+#define INITIAL_PERIOD	3000
 
 void InitEPwm1(void);
 void InitEPwm1Gpio(void);
